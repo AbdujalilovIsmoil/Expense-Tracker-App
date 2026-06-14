@@ -1,4 +1,4 @@
-import { ExpensesTypes } from "@/types";
+import { DUMMY_EXPENSES_TYPES, ExpensesTypes } from "@/types";
 import { View } from "react-native";
 import ExpensesList from "./ExpensesList";
 import ExpensesSummary from "./ExpensesSummary";
@@ -8,7 +8,7 @@ interface ExtensesOutputProps {
   expenses: ExpensesTypes[];
 }
 
-const DUMMY_EXPENSES = [
+const DUMMY_EXPENSES: DUMMY_EXPENSES_TYPES[] = [
   {
     id: "e1",
     amount: 59.99,
@@ -46,7 +46,7 @@ const ExpensesOutput = ({ expenses, expensesPeriod }: ExtensesOutputProps) => {
     <View>
       <ExpensesSummary periodName={expensesPeriod} expenses={DUMMY_EXPENSES} />
 
-      <ExpensesList />
+      <ExpensesList expenses={DUMMY_EXPENSES} />
     </View>
   );
 };
