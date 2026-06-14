@@ -1,17 +1,7 @@
-import { useRouter } from "expo-router";
-import { Button, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import ExpensesOutput from "@/components/ExpensesOutput/ExpensesOutput";
 
 const AllExpenses = () => {
-  const router = useRouter();
-
-  return (
-    <SafeAreaView>
-      <Button title="Back" onPress={() => router.push("/")} />
-
-      <Text>All Expenses</Text>
-    </SafeAreaView>
-  );
+  return <ExpensesOutput expensesPeriod="Total" />;
 };
 
 export default AllExpenses;

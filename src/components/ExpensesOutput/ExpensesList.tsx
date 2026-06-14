@@ -1,9 +1,9 @@
 import { FlatList, View } from "react-native";
 
-const ExpensesList = ({ expenses }) => {
+const ExpensesList = () => {
   return (
     <FlatList
-      data={expenses}
+      data={[]}
       renderItem={() => {
         return <View></View>;
       }}

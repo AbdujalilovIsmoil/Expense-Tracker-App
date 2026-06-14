@@ -1,20 +1,7 @@
-import { useRouter } from "expo-router";
-import { Button, StatusBar, Text, View } from "react-native";
+import ExpensesOutput from "@/components/ExpensesOutput/ExpensesOutput";
 
 const index = () => {
-  const router = useRouter();
-
-  return (
-    <View>
-      <Button
-        title="All Expenses"
-        onPress={() => router.push("/all-expenses")}
-      />
-      <Text>Hello World</Text>
-
-      <StatusBar barStyle={"dark-content"} />
-    </View>
-  );
+  return <ExpensesOutput expensesPeriod="Last 7 Days" />;
 };
 
 export default index;
