@@ -9,6 +9,7 @@ const Layout = () => {
       <Tabs
         screenOptions={{
           headerTintColor: "white",
+          tabBarInactiveTintColor: "white",
           tabBarActiveTintColor: GlobalStyles.colors.accent500,
           tabBarStyle: {
             backgroundColor: GlobalStyles.colors.primary500,
