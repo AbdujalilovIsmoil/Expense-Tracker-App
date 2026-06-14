@@ -1,11 +1,11 @@
-import { DUMMY_EXPENSES_TYPES, ExpensesTypes } from "@/types";
-import { View } from "react-native";
+import { GlobalStyles } from "@/constants/styles";
+import { DUMMY_EXPENSES_TYPES } from "@/types";
+import { StyleSheet, View } from "react-native";
 import ExpensesList from "./ExpensesList";
 import ExpensesSummary from "./ExpensesSummary";
 
 interface ExtensesOutputProps {
   expensesPeriod: string;
-  expenses: ExpensesTypes[];
 }
 
 const DUMMY_EXPENSES: DUMMY_EXPENSES_TYPES[] = [
@@ -41,9 +41,9 @@ const DUMMY_EXPENSES: DUMMY_EXPENSES_TYPES[] = [
   },
 ];
 
-const ExpensesOutput = ({ expenses, expensesPeriod }: ExtensesOutputProps) => {
+const ExpensesOutput = ({ expensesPeriod }: ExtensesOutputProps) => {
   return (
-    <View>
+    <View style={styles.container}>
       <ExpensesSummary periodName={expensesPeriod} expenses={DUMMY_EXPENSES} />
 
       <ExpensesList expenses={DUMMY_EXPENSES} />
@@ -52,3 +52,11 @@ const ExpensesOutput = ({ expenses, expensesPeriod }: ExtensesOutputProps) => {
 };
 
 export default ExpensesOutput;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: GlobalStyles.colors.primary700,
+  },
+});
