@@ -1,13 +1,19 @@
+import { ExpensesTypes } from "@/types";
 import { View } from "react-native";
 import ExpensesList from "./ExpensesList";
 import ExpensesSummary from "./ExpensesSummary";
 
-const ExpensesOutput = ({ expenses }) => {
+interface ExtensesOutputProps {
+  expensesPeriod: string;
+  expenses: ExpensesTypes[];
+}
+
+const ExpensesOutput = ({ expenses, expensesPeriod }: ExtensesOutputProps) => {
   return (
     <View>
-      <ExpensesSummary />
+      <ExpensesSummary periodName={expensesPeriod} expenses={expenses} />
 
-      <ExpensesList />
+      <ExpensesList expenses={expenses} />
     </View>
   );
 };
