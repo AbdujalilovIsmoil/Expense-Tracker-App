@@ -1,3 +1,4 @@
+import IconButton from "@/components/UI/IconButton";
 import { GlobalStyles } from "@/constants/styles";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
@@ -16,6 +17,16 @@ const Layout = () => {
           },
           headerStyle: {
             backgroundColor: GlobalStyles.colors.primary500,
+          },
+          headerRight: ({ tintColor }) => {
+            return (
+              <IconButton
+                icon="add"
+                color={String(tintColor)}
+                size={24}
+                onPress={() => {}}
+              />
+            );
           },
         }}
       >
