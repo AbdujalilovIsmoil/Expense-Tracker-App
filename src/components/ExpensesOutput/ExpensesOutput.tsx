@@ -1,19 +1,20 @@
-import { DUMMY_EXPENSES } from "@/constants/dummy-data";
 import { GlobalStyles } from "@/constants/styles";
+import { ExpensesTypes } from "@/types";
 import { StyleSheet, View } from "react-native";
 import ExpensesList from "./ExpensesList";
 import ExpensesSummary from "./ExpensesSummary";
 
 interface ExtensesOutputProps {
   expensesPeriod: string;
+  expenses: ExpensesTypes[];
 }
 
-const ExpensesOutput = ({ expensesPeriod }: ExtensesOutputProps) => {
+const ExpensesOutput = ({ expenses, expensesPeriod }: ExtensesOutputProps) => {
   return (
     <View style={styles.container}>
-      <ExpensesSummary periodName={expensesPeriod} expenses={DUMMY_EXPENSES} />
+      <ExpensesSummary periodName={expensesPeriod} expenses={expenses} />
 
-      <ExpensesList expenses={DUMMY_EXPENSES} />
+      <ExpensesList expenses={expenses} />
     </View>
   );
 };

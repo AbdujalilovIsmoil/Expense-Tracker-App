@@ -1,13 +1,17 @@
 import Button from "@/components/UI/Button";
 import IconButton from "@/components/UI/IconButton";
 import { GlobalStyles } from "@/constants/styles";
+import { ExpensesContext } from "@/store/expenses-context";
 import { useLocalSearchParams, useNavigation } from "expo-router";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
 
 const ManageExpense = () => {
+  const state = useContext(ExpensesContext);
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
+
+  console.log(state);
 
   const isEditing = !!id;
 
