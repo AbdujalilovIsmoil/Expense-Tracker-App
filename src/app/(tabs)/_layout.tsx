@@ -8,7 +8,7 @@ const Layout = () => {
   return (
     <SafeAreaProvider>
       <Tabs
-        screenOptions={() => ({
+        screenOptions={({ route }) => ({
           headerTintColor: "white",
           tabBarInactiveTintColor: "white",
           tabBarActiveTintColor: GlobalStyles.colors.accent500,
@@ -19,6 +19,7 @@ const Layout = () => {
             backgroundColor: GlobalStyles.colors.primary500,
           },
           headerRight: ({ tintColor }) => {
+            console.log("route", route);
             return (
               <IconButton
                 size={24}

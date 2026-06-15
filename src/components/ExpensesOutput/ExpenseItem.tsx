@@ -4,13 +4,21 @@ import { getFormattedDate } from "@/utility/date";
 import { useRouter } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-type EXPENSE_ITEM_TYPES = Omit<DUMMY_EXPENSES_TYPES, "id">;
-
-const ExpenseItem = ({ amount, date, description }: EXPENSE_ITEM_TYPES) => {
+const ExpenseItem = ({
+  id,
+  date,
+  amount,
+  description,
+}: DUMMY_EXPENSES_TYPES) => {
   const router = useRouter();
 
   const expensePressHandler = () => {
-    router.push("/manage-expense");
+    router.push({
+      pathname: "/manage-expense",
+      params: {
+        id,
+      },
+    });
   };
 
   return (
