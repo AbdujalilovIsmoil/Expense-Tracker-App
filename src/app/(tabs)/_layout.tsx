@@ -1,14 +1,14 @@
 import IconButton from "@/components/UI/IconButton";
 import { GlobalStyles } from "@/constants/styles";
 import { Ionicons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Tabs, router } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const Layout = () => {
   return (
     <SafeAreaProvider>
       <Tabs
-        screenOptions={{
+        screenOptions={() => ({
           headerTintColor: "white",
           tabBarInactiveTintColor: "white",
           tabBarActiveTintColor: GlobalStyles.colors.accent500,
@@ -21,14 +21,14 @@ const Layout = () => {
           headerRight: ({ tintColor }) => {
             return (
               <IconButton
+                size={24}
                 icon="add"
                 color={String(tintColor)}
-                size={24}
-                onPress={() => {}}
+                onPress={() => router.push("/manage-expense")}
               />
             );
           },
-        }}
+        })}
       >
         <Tabs.Screen
           name="index"

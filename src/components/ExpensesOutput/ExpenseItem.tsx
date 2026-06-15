@@ -1,12 +1,17 @@
 import { GlobalStyles } from "@/constants/styles";
 import { DUMMY_EXPENSES_TYPES } from "@/types";
 import { getFormattedDate } from "@/utility/date";
+import { useRouter } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 type EXPENSE_ITEM_TYPES = Omit<DUMMY_EXPENSES_TYPES, "id">;
 
 const ExpenseItem = ({ amount, date, description }: EXPENSE_ITEM_TYPES) => {
-  const expensePressHandler = () => {};
+  const router = useRouter();
+
+  const expensePressHandler = () => {
+    router.push("/manage-expense");
+  };
 
   return (
     <Pressable
