@@ -1,8 +1,9 @@
 import { DUMMY_EXPENSES_TYPES } from "@/types";
-import { FlatList, Text } from "react-native";
+import { FlatList } from "react-native";
+import ExpenseItem from "./ExpenseItem";
 
 const renderExpenseItem = ({ item }: { item: DUMMY_EXPENSES_TYPES }) => {
-  return <Text>{item.description}</Text>;
+  return <ExpenseItem {...item} />;
 };
 
 const ExpensesList = ({ expenses }: { expenses: DUMMY_EXPENSES_TYPES[] }) => {
