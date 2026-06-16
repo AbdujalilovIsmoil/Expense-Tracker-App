@@ -1,5 +1,4 @@
 import ExpenseForm from "@/components/ManageExpense/ExpenseForm";
-import Button from "@/components/UI/Button";
 import IconButton from "@/components/UI/IconButton";
 import { GlobalStyles } from "@/constants/styles";
 import { ExpensesContext } from "@/store/expenses-context";
@@ -49,15 +48,11 @@ const ManageExpense = () => {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm />
-      <View style={styles.buttons}>
-        <Button style={styles.button} mode="flat" onPress={cancelHandler}>
-          Cancel
-        </Button>
-        <Button style={styles.button} onPress={confirmHandler}>
-          {isEditing ? "Update" : "Add"}
-        </Button>
-      </View>
+      <ExpenseForm
+        onCancel={cancelHandler}
+        submitButtonLabel={isEditing ? "Update" : "Add"}
+      />
+      {/* buttons */}
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton
@@ -79,15 +74,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     backgroundColor: GlobalStyles.colors.primary800,
-  },
-  button: {
-    minWidth: 120,
-    marginHorizontal: 8,
-  },
-  buttons: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "center",
   },
   deleteContainer: {
     marginTop: 16,
