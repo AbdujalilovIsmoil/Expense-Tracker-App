@@ -5,7 +5,7 @@ interface InputProps {
   textInputConfig: TextInputProps;
 }
 
-const Input = ({ label, textInputConfig }: InputProps) => {
+const Input = ({ label, textInputConfig }: Partial<InputProps>) => {
   return (
     <View>
       <Text>{label}</Text>
