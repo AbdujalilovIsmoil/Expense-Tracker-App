@@ -20,7 +20,13 @@ const ExpenseForm = () => {
           placeholder: "YYYY-MM-DD",
         }}
       />
-      <Input label="Description" />
+      <Input
+        label="Description"
+        textInputConfig={{
+          multiline: true,
+          autoCorrect: false,
+        }}
+      />
     </View>
   );
 };
