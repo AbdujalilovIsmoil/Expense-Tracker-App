@@ -29,6 +29,20 @@ const ManageExpense = () => {
   };
 
   const confirmHandler = () => {
+    if (isEditing) {
+      expenseCtx.updateExpense(String(id), {
+        amount: 20.00,
+        date: new Date("2026-12-10"),
+        description: "I'm a mobile engineer.",
+      });
+    } else {
+      expenseCtx.addExpense({
+        amount: 19.99,
+        date: new Date("2026-12-01"),
+        description: "This is a book.",
+      });
+    }
+
     navigation.goBack();
   };
 
