@@ -1,7 +1,7 @@
 import { DUMMY_EXPENSES_TYPES, InputValuesProps } from "@/types";
 import { getFormattedDate } from "@/utility/date";
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import Button from "../UI/Button";
 import Input from "./Input";
 
@@ -44,6 +44,16 @@ const ExpenseForm = ({
       amount: Number(inputValues.amount),
       description: inputValues.description,
     };
+
+    const amountIsValid =
+      !isNaN(Number(expenseData.amount)) && Number(expenseData.amount) > 0;
+    const dateIsValid = expenseData.date.toString() !== "Invalid Date";
+    const descriptionIsValid = expenseData.description.trim().length > 0;
+
+    if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
+        Alert.alert("Invalid input", "Please check your input values")
+      return;
+    }
 
     onSubmit(expenseData);
   };
