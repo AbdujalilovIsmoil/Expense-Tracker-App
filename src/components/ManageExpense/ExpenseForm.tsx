@@ -1,4 +1,5 @@
 import { DUMMY_EXPENSES_TYPES, InputValuesProps } from "@/types";
+import { getFormattedDate } from "@/utility/date";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../UI/Button";
@@ -9,18 +10,20 @@ type IndentifierTypes = "amount" | "date" | "description";
 interface ExpenseFormProps {
   onCancel: () => void;
   submitButtonLabel: string;
+  defaultValues: DUMMY_EXPENSES_TYPES | undefined;
   onSubmit: (values: Omit<DUMMY_EXPENSES_TYPES, "id">) => void;
 }
 
 const ExpenseForm = ({
   onSubmit,
   onCancel,
+  defaultValues,
   submitButtonLabel,
 }: ExpenseFormProps) => {
   const [inputValues, setInputValues] = useState<InputValuesProps>({
-    date: "",
-    amount: "",
-    description: "",
+    description: defaultValues ? defaultValues.description : "",
+    amount: defaultValues ? defaultValues.amount.toString() : "",
+    date: defaultValues ? getFormattedDate(new Date(defaultValues.date)) : "",
   });
 
   const inputChangeHandler = (

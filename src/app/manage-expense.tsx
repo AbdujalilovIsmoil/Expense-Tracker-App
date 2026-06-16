@@ -14,6 +14,10 @@ const ManageExpense = () => {
 
   const isEditing = !!id;
 
+  const selectedExpense = expenseCtx.expenses.find((expense) => {
+    return expense.id === id;
+  });
+
   useLayoutEffect(() => {
     navigation.setOptions({
       title: isEditing ? "Edit Expense" : "Add Expense",
@@ -44,6 +48,7 @@ const ManageExpense = () => {
       <ExpenseForm
         onCancel={cancelHandler}
         onSubmit={confirmHandler}
+        defaultValues={selectedExpense}
         submitButtonLabel={isEditing ? "Update" : "Add"}
       />
       {/* buttons */}
