@@ -1,20 +1,15 @@
+import { DUMMY_EXPENSES_TYPES, InputValuesProps } from "@/types";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../UI/Button";
 import Input from "./Input";
 
-interface InputValuesProps {
-  date: string;
-  amount: string;
-  description: string;
-}
-
 type IndentifierTypes = "amount" | "date" | "description";
 
 interface ExpenseFormProps {
-  onSubmit: () => void;
   onCancel: () => void;
   submitButtonLabel: string;
+  onSubmit: (values: Omit<DUMMY_EXPENSES_TYPES, "id">) => void;
 }
 
 const ExpenseForm = ({
@@ -40,7 +35,15 @@ const ExpenseForm = ({
     });
   };
 
-  const submitHandler = () => {};
+  const submitHandler = () => {
+    const expenseData: InputValuesProps = {
+      date: new Date(inputValues.date),
+      amount: Number(inputValues.amount),
+      description: inputValues.description,
+    };
+
+    onSubmit(expenseData);
+  };
 
   return (
     <View style={styles.form}>
@@ -50,8 +53,8 @@ const ExpenseForm = ({
           label="Amount"
           style={styles.rowInput}
           textInputConfig={{
-            value: inputValues.amount,
             keyboardType: "decimal-pad",
+            value: String(inputValues.amount),
             onChangeText: (value) => inputChangeHandler("amount", value),
           }}
         />
@@ -60,8 +63,8 @@ const ExpenseForm = ({
           style={styles.rowInput}
           textInputConfig={{
             maxLength: 10,
-            value: inputValues.date,
             placeholder: "YYYY-MM-DD",
+            value: String(inputValues.date),
             onChangeText: (value) => inputChangeHandler("date", value),
           }}
         />

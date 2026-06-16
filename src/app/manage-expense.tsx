@@ -2,6 +2,7 @@ import ExpenseForm from "@/components/ManageExpense/ExpenseForm";
 import IconButton from "@/components/UI/IconButton";
 import { GlobalStyles } from "@/constants/styles";
 import { ExpensesContext } from "@/store/expenses-context";
+import { DUMMY_EXPENSES_TYPES } from "@/types";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { useContext, useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
@@ -28,19 +29,11 @@ const ManageExpense = () => {
     navigation.goBack();
   };
 
-  const confirmHandler = () => {
+  const confirmHandler = (expenseData: Omit<DUMMY_EXPENSES_TYPES, "id">) => {
     if (isEditing) {
-      expenseCtx.updateExpense(String(id), {
-        amount: 20.0,
-        date: new Date("2026-12-10"),
-        description: "I'm a mobile engineer.",
-      });
+      expenseCtx.updateExpense(String(id), expenseData);
     } else {
-      expenseCtx.addExpense({
-        amount: 19.99,
-        date: new Date("2026-12-01"),
-        description: "This is a book.",
-      });
+      expenseCtx.addExpense(expenseData);
     }
 
     navigation.goBack();
@@ -50,6 +43,7 @@ const ManageExpense = () => {
     <View style={styles.container}>
       <ExpenseForm
         onCancel={cancelHandler}
+        onSubmit={confirmHandler}
         submitButtonLabel={isEditing ? "Update" : "Add"}
       />
       {/* buttons */}
