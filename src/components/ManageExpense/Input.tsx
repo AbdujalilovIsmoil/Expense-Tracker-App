@@ -5,16 +5,18 @@ import {
   TextInput,
   TextInputProps,
   View,
+  ViewStyle,
 } from "react-native";
 
 interface InputProps {
   label: string;
+  style: ViewStyle;
   textInputConfig: TextInputProps;
 }
 
-const Input = ({ label, textInputConfig }: Partial<InputProps>) => {
+const Input = ({ label, textInputConfig, style }: Partial<InputProps>) => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={[styles.inputContainer, style]}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         style={[
