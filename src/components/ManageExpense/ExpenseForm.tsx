@@ -25,6 +25,7 @@ const ExpenseForm = () => {
         textInputConfig={{
           multiline: true,
           autoCorrect: false,
+          onChangeText: () => {},
         }}
       />
     </View>
