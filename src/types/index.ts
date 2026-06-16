@@ -9,7 +9,16 @@ export interface DUMMY_EXPENSES_TYPES extends ExpensesTypes {
 }
 
 export interface InputValuesProps {
-  date: Date | string;
-  description: string;
-  amount: string | number;
+  date: {
+    isValid: boolean;
+    value: Date | string;
+  };
+  description: {
+    value: string;
+    isValid: boolean;
+  };
+  amount: {
+    isValid: boolean;
+    value: string | number;
+  };
 }
