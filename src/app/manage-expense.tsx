@@ -7,11 +7,9 @@ import { useContext, useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
 
 const ManageExpense = () => {
-  const state = useContext(ExpensesContext);
+  const expenseCtx = useContext(ExpensesContext);
   const navigation = useNavigation();
   const { id } = useLocalSearchParams();
-
-  console.log(state);
 
   const isEditing = !!id;
 
@@ -23,6 +21,7 @@ const ManageExpense = () => {
 
   const deleteExpenseHandler = () => {
     navigation.goBack();
+    expenseCtx.deleteExpense(String(id));
   };
 
   const cancelHandler = () => {

@@ -59,7 +59,13 @@ const expensesReducer = (state: DUMMY_EXPENSES_TYPES[], action: Action) => {
       return updatedExpenses;
 
     case "DELETE":
-      return state.filter((expense) => expense.id !== action.payload);
+      const deleteDummyData = state.filter((expense) => {
+        return expense.id !== action.payload;
+      });
+
+      console.log(state.length, deleteDummyData.length);
+
+      return deleteDummyData;
 
     default:
       return state;

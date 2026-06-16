@@ -1,4 +1,4 @@
-import { DUMMY_EXPENSES_TYPES } from "@/types";
+import { DUMMY_EXPENSES_TYPES, ExpensesTypes } from "@/types";
 import { FlatList } from "react-native";
 import ExpenseItem from "./ExpenseItem";
 
