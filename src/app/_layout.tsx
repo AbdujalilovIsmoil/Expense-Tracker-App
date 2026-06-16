@@ -1,10 +1,12 @@
 import { GlobalStyles } from "@/constants/styles";
 import ExpensesContextProvider from "@/store/expenses-context";
 import { Stack } from "expo-router";
+import { StatusBar } from "react-native";
 
 const Layout = () => {
   return (
     <ExpensesContextProvider>
+      <StatusBar barStyle={"light-content"} />
       <Stack
         screenOptions={{
           headerShown: false,
