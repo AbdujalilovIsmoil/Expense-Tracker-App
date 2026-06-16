@@ -31,7 +31,7 @@ const ManageExpense = () => {
   const confirmHandler = () => {
     if (isEditing) {
       expenseCtx.updateExpense(String(id), {
-        amount: 20.00,
+        amount: 20.0,
         date: new Date("2026-12-10"),
         description: "I'm a mobile engineer.",
       });
