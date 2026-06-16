@@ -1,3 +1,4 @@
+import { GlobalStyles } from "@/constants/styles";
 import { DUMMY_EXPENSES_TYPES, InputValuesProps } from "@/types";
 import { getFormattedDate } from "@/utility/date";
 import { useState } from "react";
@@ -65,8 +66,6 @@ const ExpenseForm = ({
     const descriptionIsValid = expenseData.description.trim().length > 0;
 
     if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
-      // Alert.alert("Invalid input", "Please check your input values");
-
       setInputs((currentInputs) => {
         return {
           date: { value: currentInputs.date.value, isValid: dateIsValid },
@@ -96,6 +95,7 @@ const ExpenseForm = ({
         <Input
           label="Amount"
           style={styles.rowInput}
+          inValid={!inputs.amount.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
             value: String(inputs.amount.value),
@@ -105,6 +105,7 @@ const ExpenseForm = ({
         <Input
           label="Date"
           style={styles.rowInput}
+          inValid={!inputs.date.isValid}
           textInputConfig={{
             maxLength: 10,
             placeholder: "YYYY-MM-DD",
@@ -116,6 +117,7 @@ const ExpenseForm = ({
 
       <Input
         label="Description"
+        inValid={!inputs.description.isValid}
         textInputConfig={{
           multiline: true,
           autoCorrect: false,
@@ -124,7 +126,9 @@ const ExpenseForm = ({
         }}
       />
       {formIsInValid && (
-        <Text>Invalid input values - please check your entered data</Text>
+        <Text style={styles.errorText}>
+          Invalid input values - please check your entered data
+        </Text>
       )}
       <View style={styles.buttons}>
         <Button style={styles.button} mode="flat" onPress={onCancel}>
@@ -150,6 +154,11 @@ const styles = StyleSheet.create({
     marginVertical: 24,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  errorText: {
+    margin: 8,
+    textAlign: "center",
+    color: GlobalStyles.colors.error500,
   },
   inputsRow: {
     flexDirection: "row",
