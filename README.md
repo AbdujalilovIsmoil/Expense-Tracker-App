@@ -1,56 +1,90 @@
-# Welcome to your Expo app 👋
+# 🎯 Expense Tracker App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple Expense Tracker mobile application built with **React Native (Expo)**.  
+The app allows users to manage their daily expenses by adding, editing, and deleting items, with a clean and simple UI.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+- 🧾 Add new expenses  
+- ✏️ Edit existing expenses  
+- 🗑️ Delete expenses  
+- 📊 View expenses (Recent & All Expenses)  
+- 🔄 Real-time UI updates  
+- 📱 Simple and clean mobile interface  
+- 🧭 Smooth navigation using Expo Router  
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🧠 State Management
 
-In the output, you'll find options to open the app in a
+The app uses **React Context API** for global state management.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- All expenses are stored in Context state  
+- Actions include add, update, and delete expense  
+- UI automatically updates when state changes  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+This approach was chosen because the project is small/medium scale, and Context API is sufficient without introducing Redux complexity.
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 🔄 Data Flow
 
-```bash
-npm run reset-project
-```
+User action (Add / Edit / Delete Expense)  
+→ Context API updates global state  
+→ State change triggers re-render  
+→ UI reflects updated data instantly  
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## 📱 Screens
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+- Recent Expenses Screen  
+- All Expenses Screen  
+- Manage Expense Screen (Add / Edit)  
 
-## Learn more
+Navigation is handled using **Expo Router**.
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🛠️ Technologies Used
 
-## Join the community
+- React Native  
+- Expo  
+- Expo Router  
+- React Context API  
+- Expo Vector Icons  
+- React Hooks (useState, useEffect, useLayoutEffect)
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## ⚙️ Implementation Details
+
+- **FlatList** used for efficient rendering of expense lists  
+- **useLayoutEffect** used to configure navigation header before screen render  
+- **keyExtractor** used with unique IDs for optimized list rendering  
+- Input validation implemented (empty values, invalid numbers)  
+- Local state + Context API used for managing application data  
+
+---
+
+## 💡 Summary
+
+This project demonstrates real-world React Native concepts such as:
+
+- CRUD operations (Create, Read, Update, Delete)  
+- Global state management with Context API  
+- Navigation using Expo Router  
+- Performance optimization using FlatList  
+- Clean component-based architecture  
+
+---
+
+## 🚀 Future Improvements
+
+- AsyncStorage or backend integration for data persistence  
+- Expense categories and filtering  
+- Charts and analytics  
+- Authentication system  
+- Cloud sync (Firebase / Supabase)
